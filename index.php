@@ -1,3 +1,28 @@
+<?php
+
+// Creo array associativo contenente alfabeto, numeri da 0 a 9, e simboli random
+$characters = array_merge(range('a', 'z'), range(0, 9), range('!', '@'));
+
+//con chiamata GET prendo numero per lunghezza password inserita da user.
+$userNumber = $_GET['userNumber'];
+
+$password = passwordRandom($userNumber, $characters);
+
+// Creo funzione per generare una password che avrà come parametri
+// i caratteri contenuti in $characters e la lunghezza di $userNumber
+function passwordRandom($lunghezza, $caratteri) {
+    $stringaRandom = '';
+    $lunghezzaCaratteri = count($caratteri);
+    for ($i = 0; $i < $lunghezza; $i++) {
+        $stringaRandom .= $caratteri[rand(0, $lunghezzaCaratteri - 1)];
+    }
+    return $stringaRandom;
+}
+
+var_dump($password);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,18 +48,21 @@
             <span>Nessun parametro valido inserito</span>
         </div>
 
-        <div class="input p-3 d-flex justify-content-between">
-            <label>Lunghezza Password:</label>
 
-            <input type="text"></input>
-        </div>
+        <form form="GET">
+            <div class="input p-3 d-flex justify-content-between">
+                <label>Lunghezza Password:</label>
+             
+                <input name="userNumber" type="text"></input>
+            </div>
 
 
-        <div class="mt-3">
-            <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-secondary">Secondary</button>
-        </div>
-        
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Primary</button>
+                <button type="submit" class="btn btn-secondary">Secondary</button>
+            </div>
+        </form>
+
     </main>
     
 </body>
