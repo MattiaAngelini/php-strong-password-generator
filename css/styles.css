@@ -1,0 +1,19 @@
+body {
+    background-color:blue;
+}
+
+.titles h1 {
+    color: lightblue;
+}
+
+.titles h3 {
+    color: white;
+}
+
+.result {
+    background-color: lightblue;
+}
+
+.input {
+    background-color: white;
+}
